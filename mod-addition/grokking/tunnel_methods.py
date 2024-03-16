@@ -76,6 +76,9 @@ class LinearProbe(nn.Module):
                     self.criterion(output, y) + 1e-3 * self.linear_probe.weight.norm()
                 )
                 self.optimizer.zero_grad()
+                # import pdb
+                # pdb.set_trace()
+                loss.requires_grad =True
                 loss.backward()
                 self.optimizer.step()
                 epoch_loss += loss
